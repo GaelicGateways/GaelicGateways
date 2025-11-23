@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaelic Gateways</title>
+<style>
+/* --- HEADER LAYOUT --- */
+.gg-header {background:#fff;border-bottom:1px solid #e4e4e4;padding:0.75rem 0;position:sticky;top:0;z-index:1000;}
+.gg-header-inner {width:92%;max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.gg-brand {display:flex;align-items:center;text-decoration:none;}
+.gg-logo {height:58px;width:auto;margin-right:12px;}
+.gg-brand-text {font-family:"Georgia",serif;font-size:1.35rem;line-height:1.1;font-weight:600;color:#0d2818;letter-spacing:0.5px;text-transform:uppercase;}
+.gg-nav {display:flex;align-items:center;gap:2rem;}
+.gg-nav a {font-size:1rem;text-decoration:none;font-weight:500;color:#1e3923;transition:color 0.2s ease;position:relative;}
+.gg-nav a::after {content:'';position:absolute;width:0;height:2px;bottom:-2px;left:0;background-color:#57734f;transition:width 0.3s ease;}
+.gg-nav a:hover::after {width:100%;}
+.gg-nav a:hover {color:#57734f;}
+.gg-btn {padding:0.5rem 1rem;border-radius:4px;font-weight:600;border:2px solid transparent;transition:all 0.2s ease;}
+.gg-btn-primary {background:#1e3923;color:#fff;}
+.gg-btn:hover, .gg-btn-primary:hover {transform:scale(1.05);}
+@media (max-width:820px){.gg-nav{gap:1.2rem;}}
+@media (max-width:640px){.gg-brand-text{display:none;}.gg-logo{height:46px;transition:height 0.3s ease;}}
+@media (max-width:540px){.gg-nav{display:none;}.gg-menu-toggle{display:block;}}
+.gg-menu-toggle {display:none;font-size:1.8rem;background:none;border:none;cursor:pointer;color:#1e3923;}
+.gg-nav-overlay {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:900;opacity:0;transition:opacity 0.3s ease;}
+@media (max-width:540px){.gg-nav{position:fixed;top:0;right:-250px;height:100%;width:250px;background:#fff;flex-direction:column;align-items:flex-start;padding:2rem 1rem;gap:1.5rem;border-left:1px solid #e4e4e4;box-shadow:-4px 0 8px rgba(0,0,0,0.1);transition:right 0.3s ease, opacity 0.3s ease;z-index:1000;}
+.gg-nav.show{right:0;opacity:1;}}
+main {width:92%;max-width:1000px;margin:2rem auto;font-family:Arial,sans-serif;color:#1e3923;line-height:1.6;}
+h1,h2{color:#0d2818;}
+h2{margin-top:3rem;margin-bottom:1rem;}
+p{margin-bottom:1.5rem;}
+</style>
+</head>
+<body>
+<header class="gg-header">
+<div class="gg-header-inner">
+<a href="/" class="gg-brand" aria-label="Go to Gaelic Gateways homepage">
+<img src="logo.jpeg" alt="Gaelic Gateways logo" class="gg-logo"/>
+<span class="gg-brand-text">Gaelic<br>Gateways</span>
+</a>
+<nav class="gg-nav" aria-label="Main navigation">
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+<a href="#book" class="gg-btn gg-btn-primary">Book Now</a>
+</nav>
+<button class="gg-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+</div>
+</header>
+<div class="gg-nav-overlay"></div>
+<main>
+<h1>Gaelic Gateways</h1>
+<p><strong>Professional Transport and Guided Tours for Visitors to Ireland</strong></p>
+<p>All Drivers ATGI-Certified • Fáilte Ireland Accredited</p>
+<p><a href="#services" class="gg-btn gg-btn-primary">View Services</a> <a href="#contact" class="gg-btn">Request a Quote</a></p>
+<h2>Welcome to Gaelic Gateways</h2>
+<p>Gaelic Gateways is a professional travel company providing private transport and guided tours for visitors across Ireland. Our experienced drivers are ATGI-Certified and Fáilte Ireland-Accredited, delivering safe, knowledgeable, and friendly journeys — from single transfers to multi-day bespoke tours.</p>
+<h2>Private Transfers</h2>
+<p>Airport pickups, hotel transfers, and inter-city journeys — punctual, comfortable vehicles.</p>
+<h2>Guided Day Tours</h2>
+<p>Expert-guided itineraries to iconic sights: Cliffs of Moher, Ring of Kerry, Giant's Causeway, and more.</p>
+<h2>Bespoke Multi-Day Tours</h2>
+<p>Custom routes, local experiences, and curated stays — we plan your perfect Irish getaway.</p>
+</main>
+<script>
+const menuToggle=document.querySelector('.gg-menu-toggle');
+const nav=document.querySelector('.gg-nav');
+const overlay=document.querySelector('.gg-nav-overlay');
+function toggleMenu(){const expanded=menuToggle.getAttribute('aria-expanded')==='true'||false;menuToggle.setAttribute('aria-expanded',!expanded);nav.classList.toggle('show');if(nav.classList.contains('show')){overlay.style.display='block';setTimeout(()=>overlay.style.opacity='1',10);}else{overlay.style.opacity='0';setTimeout(()=>overlay.style.display='none',300);}}
+menuToggle.addEventListener('click',toggleMenu);
+overlay.addEventListener('click',toggleMenu);
+</script>
+</body>
+</html>
